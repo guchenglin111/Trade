@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bs.trade.mapper.GoodsMapper">
+    <resultMap id="BaseResultMap" type="com.bs.trade.model.GoodsInfo">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+        <result column="region" property="region" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <select id="selectByGoodsQueryModel" resultMap="BaseResultMap">
+        select id,name,region from goods
+        wherw 1=1
+        <include refid="sql_name"/>
+        <include refid="sql_region"/>
+        <include refid="sql_id"/>
+    </select>
+
+    <sql id="sql_name">
+        <if test="name != null and name != ''">
+            and name like concat('%',concat(#{name}, '%'))
+        </if>
+    </sql>
+
+    <sql id="sql_region">
+        <if test="region != null and region != ''">
+            and region like concat('%',concat(#{region}, '%'))
+        </if>
+    </sql>
+    <sql id="sql_id">
+        <if test="id != null">
+            and id = #{id}
+        </if>
+    </sql>
+</mapper>
