@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bs.trade.mapper.TradeMapper">
+    <resultMap id="goodsVo" type="com.bs.trade.model.GoodsVo">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="showTrade" resultMap="goodsVo">
+       select c.id as tradeId,c.goods as id,g.name as name,c.owner as userId,u.name as ownerName ,c.circulate_status as tradeStatus,
+              c.lend_time as outTime,c.back_time as backTime,g.image_url as imageUrl,t.name as typeName,g.trade_cost as tradeCost
+              from circulate_info as c , user_info as u,goods as g,goods_type as t
+              WHERE c.owner = u.id
+              AND c.goods = g.id
+              AND g.type = t.id
+              AND c.lender = #{id}
+              ORDER BY c.id DESC
+    </select>
+    <select id="showBorrow" resultMap="goodsVo">
+        select c.id as tradeId,c.goods as id,g.name as name,c.lender as userId,u.name as lenderName ,c.circulate_status as tradeStatus,
+        c.lend_time as outTime,c.back_time as backTime,g.image_url as imageUrl,t.name as typeName,g.trade_cost as tradeCost
+        from circulate_info as c , user_info as u,goods as g,goods_type as t
+        WHERE c.lender = u.id
+        AND c.goods = g.id
+        AND g.type = t.id
+        AND c.owner = #{id}
+        ORDER BY c.id DESC
+    </select>
+</mapper>

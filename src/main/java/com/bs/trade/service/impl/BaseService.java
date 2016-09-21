@@ -9,7 +9,6 @@ import tk.mybatis.mapper.common.Mapper;
 import java.util.List;
 
 /**
- *
  * Created by liuzh on 2014/12/11.
  */
 public abstract class BaseService<T> implements IService<T> {
@@ -30,8 +29,8 @@ public abstract class BaseService<T> implements IService<T> {
         return mapper.insert(entity);
     }
 
-    public int delete(Object key) {
-        return mapper.deleteByPrimaryKey(key);
+    public int delete(T  entity) {
+        return mapper.delete(entity);
     }
 
     public int updateAll(T entity) {
@@ -46,6 +45,9 @@ public abstract class BaseService<T> implements IService<T> {
         return mapper.selectByExample(example);
     }
 
-    public List<T> query(T entity) {return mapper.select(entity);}
+    public List<T> query(T entity) {
+        return mapper.select(entity);
+    }
+
     //TODO 其他...
 }

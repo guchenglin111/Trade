@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>“易清”借还管理系统</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<!-- title -->
+<div class='header-wrap'>
+	<div class='header-box'>
+		<div class='header'>
+			<div class='header-logo'><img src="img/dogLogo.png" alt='logo'></div>
+			<div class='header-search'>
+				<input type="text" placeholder='商品\用户名称' class='search'>
+				<i class='icomoon search-font'>&#xe986</i>
+			</div>
+			<div class="header-nav">
+				<ul>
+					<li><a href="goodsList">去搜索</a></li>
+					<li><a href="publish">我要发布</a></li>
+					<li><a href="personal">我的</a></li>
+				</ul>
+			</div>
+			<div class='header-info'>
+				<!-- 已登录 -->
+				<ul class="header-info-ls" id='loginHave'>
+					<li>
+						<a href="javascript:void(0);" id="alarm">
+							<i class='icomoon' >&#xe951</i>
+							<i class='msg-num'></i>
+						</a>
+					</li>
+					<li class='set-info'>
+						<a href="personal" id='name'></a>
+						<a href="javascript:void(0);" >
+							<i class='icomoon arrow'id='arrow' type='up'>&#xea41</i>
+						</a>
+					</li>
+				</ul>
+				<!-- 未登录 -->
+				<ul class="header-info-ls" id='loginNone'>
+					<li>
+						<a href="login" id='login'>登陆</a>
+					</li>
+					<li class='set-info'>
+						<a href="register" id='name'>注册</a>
+					</li>
+				</ul>
+				<ul class='header-info-ls-set'>
+					<li><a href="javascript:void(0);" id="quite">退出登录</a></li>
+				</ul>
+				<ul class='header-info-msg'>
+					<!-- <li>
+                        <a href="javascript:void(0);" class='msg'></a>
+                        <a href="javascript:void(0);" ><i class='icomoon leaf' typeId='' state='0'>&#xe9a4</i></a>
+                    <> -->
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- search -->
+<div class='list-search-wrap'>
+	<div class='list-search-box'>
+		<input type="text" class='list-search'>
+		<i class='icomoon list-search-label'>&#xe986</i>
+		<span class='list-tishi'>商品/类型/地区</span>
+	</div>
+</div>
+<!-- content -->
+<div class='list-con-wrap'>
+	<div class='list-con'>
+		<ul class="pernal-nav-ls" id='listNav'>
+			<li class="active"><a href="javascript:void(0);" type='null'>全部商品</a></li>
+			<li><a href="javascript:void(0);" type='1'>电子设备</a></li>
+			<li><a href="javascript:void(0);" type='2'>生活达人</a></li>
+			<li><a href="javascript:void(0);" type='3'>吃货合集</a></li>
+			<li><a href="javascript:void(0);" type='6'>资金周转</a></li>
+			<!-- <li><a href="javascript:void(0);">全部歌曲</a></li>
+            <li><a href="javascript:void(0);">收藏歌曲</a></li>
+            <li><a href="javascript:void(0);">下载歌曲</a></li> -->
+		</ul>
+	</div>
+</div>
+
+<div class='list-music-wrap'>
+	<div class="list-music-cont">
+		<ul class="list-music-ls">
+			<!--<li class="music-cont-ls-li">
+				<ul class="music-cont-info-ls">
+					<li class="music-cont-info-ls-i1">
+						<i class='icomoon info-label label-music'>&#xe99f</i>
+					</li>
+					<li class="music-cont-info-ls-i2">
+						<img src="img/td.jpg" >
+					</li>
+					<li class="music-cont-info-ls-i3 cutWord">
+						台灯
+					</li>
+					<li class="music-cont-info-ls-i4">生活达人</li>
+					<li class="music-cont-info-ls-i5">￥45</li>
+
+					<li class="music-cont-info-ls-i7">
+						<a href="javascript:void(0);">
+							<i class='icomoon info-label label-add' data-favorite='0'>&#xea0a</i>
+						</a>
+					</li>
+					<li class="music-cont-info-ls-i6">
+						<a href="javascript:void(0);">
+							<i class='icomoon info-label label-heart' data-favorite='0'>&#xe9da</i>
+						</a>
+					</li>
+				</ul>
+			</li>-->
+
+		</ul>
+		<div class='list-none'>暂无此类商品</div>
+	</div>
+	<div class="page-wrap">
+		<div class="page-box">
+			<div id="page"></div>
+		</div>
+	</div>
+</div>
+
+<!-- footer -->
+<div class='footer-wrap'>
+	<div class='footer'>
+		<p>Copyright ©2016 汪星人</p>
+		<p>鸣谢：王雅男&商盼盼</p>
+		<p>毕业愉快</p>
+	</div>
+</div>
+
+<!-- 提示登陆 -->
+<div class='login-warn' id='goTop'>
+	<img src="img/login_waring.png">
+</div>
+</body>
+<script type="text/javascript" src='js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src='js/jquery.cookie.js'></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/list.js"></script>
+<script type="text/javascript" src="js/laypage/laypage.js"></script>
+</html>

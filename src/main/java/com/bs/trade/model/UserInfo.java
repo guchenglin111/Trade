@@ -3,14 +3,18 @@
 package com.bs.trade.model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Table(name = "user_info")
-public class UserInfo {
+public class UserInfo implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer id;
 
     /**
@@ -48,6 +52,33 @@ public class UserInfo {
      * 性别
      */
     private String sex;
+    /**
+     * 头像
+     */
+    private String portrait;
+
+    /**
+     * 资产
+     */
+    private Integer asset;
+
+    /**
+     * 发布商品量
+     */
+    @Column(name = "goods_count")
+    private Integer goodsCount;
+
+    /**
+     * 好友量
+     */
+    @Column(name = "friend_count")
+    private Integer friendCount;
+
+    /**
+     * 粉丝量
+     */
+    @Column(name = "fans_count")
+    private Integer fansCount;
 
     public Integer getId() {
         return id;
@@ -113,17 +144,53 @@ public class UserInfo {
         this.sex = sex;
     }
 
+
+    public Integer getAsset() {
+        return asset;
+    }
+
+    public void setAsset(Integer asset) {
+        this.asset = asset;
+    }
+
+    public String getPortrait() {
+        return portrait;
+    }
+
+    public void setPortrait(String portrait) {
+        this.portrait = portrait;
+    }
+
+    public Integer getGoodsCount() {
+        return goodsCount;
+    }
+
+    public void setGoodsCount(Integer goodsCount) {
+        this.goodsCount = goodsCount;
+    }
+
+    public Integer getFriendCount() {
+        return friendCount;
+    }
+
+    public void setFriendCount(Integer friendCount) {
+        this.friendCount = friendCount;
+    }
+
+    public Integer getFansCount() {
+        return fansCount;
+    }
+
+    public void setFansCount(Integer fansCount) {
+        this.fansCount = fansCount;
+    }
+
     @Override
     public String toString() {
         return "UserInfo{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
-                ", type=" + type +
-                ", email='" + email + '\'' +
-                ", phone='" + phone + '\'' +
-                ", birthday=" + birthday +
-                ", sex='" + sex + '\'' +
                 '}';
     }
 }

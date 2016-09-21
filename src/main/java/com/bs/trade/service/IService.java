@@ -17,7 +17,7 @@ public interface IService<T> {
 
     int save(T entity);
 
-    int delete(Object key);
+    int delete(T entity);
 
     int updateAll(T entity);
 
@@ -26,6 +26,7 @@ public interface IService<T> {
     List<T> selectByExample(Object example);
 
     List<T> query(T entity);
+
 
     //TODO 其他...
 }

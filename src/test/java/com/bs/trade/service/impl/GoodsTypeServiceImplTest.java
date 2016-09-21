@@ -4,8 +4,6 @@ import com.bs.trade.model.GoodsType;
 import com.bs.trade.service.GoodsTypeService;
 import org.apache.log4j.Logger;
 import org.junit.Test;
-import org.junit.Before; 
-import org.junit.After;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -26,6 +24,10 @@ public class GoodsTypeServiceImplTest {
     @Autowired
     private GoodsTypeService goodsTypeService;
 
+    /**
+     * 管理员操作，添加物品类型
+     * @throws Exception
+     */
     @Test
     public void testInsert() throws Exception {
 
@@ -34,4 +36,17 @@ public class GoodsTypeServiceImplTest {
         Object  o = goodsTypeService.save(goodsType);
         LOGGER.info(o);
     }
+
+    /**
+     * 主页，展示所有物品信息
+     * @throws Exception
+     */
+    @Test
+    public void testGetAll() throws Exception {
+        Object o = goodsTypeService.selectAll();
+        LOGGER.info(o);
+
+    }
+
+
 }

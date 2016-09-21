@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bs.trade.mapper.EvaluateMapper">
+    <resultMap id="evaluateVo" type="com.bs.trade.model.EvaluateVo">
+    </resultMap>
+
+    <select id="getEvaluateByGoods" resultMap="evaluateVo">
+        select e.id,e.lever,e.owner,e.evaluate_time as evaluateTime,e.content,u.name as userName,
+        u.portrait as userImage,g.id as goods
+        from goods_evaluate as e , user_info as u ,goods as g
+        where e.owner = u.id
+        AND e.goods = g.id
+        <include refid="sql_goods"/>
+    </select>
+
+    <sql id="sql_goods">
+        <if test="goods != null">
+            and e.goods = #{goods}
+        </if>
+    </sql>
+</mapper>

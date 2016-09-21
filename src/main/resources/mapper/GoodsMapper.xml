@@ -17,13 +17,90 @@
         <include refid="sql_region"/>
         <include refid="sql_id"/>
     </select>
+    <resultMap id="goodsVo" type="com.bs.trade.model.GoodsVo">
+    </resultMap>
+    <select id="getGoodsInfo" resultMap="goodsVo">
+        select g.id,g.name,g.region,g.type as typeId,g.owner as userId ,t.name as typeName,u.name as ownerName,g.image_url as imageUrl,
+        u.portrait as userImage,g.original_cost as originalCost,g.current_price as currentPrice,g.trade_cost as tradeCost,g.lever,u.phone as phone,
+        g.out_count as outCount , g.detail,g.status as checkStatus
+        from goods as g,goods_type as t,user_info as u
+        where g.owner = u.id
+        AND g.type = t.id
+        AND g.status = 1
+        <include refid="sql_id"/>
+    </select>
+
+
+    <select id="adminGetGoodsInfo" resultMap="goodsVo">
+        select g.id,g.name,g.region,g.type as typeId,g.owner as userId ,t.name as typeName,u.name as ownerName,g.image_url as imageUrl,
+        u.portrait as userImage,g.original_cost as originalCost,g.current_price as currentPrice,g.trade_cost as tradeCost,g.lever,u.phone as phone,
+        g.out_count as outCount , g.detail,g.status as checkStatus
+        from goods as g,goods_type as t,user_info as u
+        where g.owner = u.id
+        AND g.type = t.id
+        <include refid="sql_id"/>
+    </select>
+
+    <select id="adminGoodsInfo" resultMap="goodsVo">
+        select g.id,g.name,g.region,g.type as typeId,g.owner as userId ,t.name as typeName,u.name as ownerName,g.image_url as imageUrl,
+        u.portrait as userImage,g.original_cost as originalCost,g.current_price as currentPrice,g.trade_cost as tradeCost,g.lever,u.phone as phone,
+        g.out_count as outCount , g.detail,g.status as checkStatus
+        from goods as g,goods_type as t,user_info as u
+        where g.owner = u.id
+        AND g.type = t.id
+        ORDER BY g.id desc
+    </select>
+    <select id="showGoodsInfo" resultMap="goodsVo">
+        select g.id,g.name,g.region,g.type as typeId,g.owner as userId ,t.name as typeName,u.name as ownerName,g.image_url as imageUrl,g.status as checkStatus,g.trade_cost as tradeCost
+        from goods as g,goods_type as t,user_info as u
+        where g.owner = u.id
+        AND g.type = t.id
+        AND g.status = 1
+        <include refid="sql_name"/>
+        <include refid="sql_region"/>
+        <include refid="sql_id"/>
+        <include refid="sql_type"/>
+    </select>
+
+    <select id="selectAlls" resultMap="goodsVo">
+        select g.id,g.name,g.region,g.type as typeId,g.owner as userId ,t.name as typeName,u.name as ownerName,g.image_url as imageUrl,g.status as checkStatus,g.trade_cost as tradeCost
+        from goods as g,goods_type as t,user_info as u
+        where g.owner = u.id
+        AND g.type = t.id
+        AND g.status = 1
+        AND(
+        <include refid="sql_search_name"/>
+        <include refid="sql_search_type"/>
+        <include refid="sql_search_region"/>
+        )
+
+    </select>
+    <sql id="sql_search_name">
+        <if test="search != null and search != ''">
+             g.name like concat('%',concat(#{search}, '%'))
+        </if>
+    </sql>
+    <sql id="sql_search_type">
+        <if test="search != null">
+            or t.name like concat('%',concat(#{search}, '%'))
+        </if>
+    </sql>
+    <sql id="sql_search_region">
+        <if test="search != null and search != ''">
+            or g.region like concat('%',concat(#{search}, '%'))
+        </if>
+    </sql>
 
     <sql id="sql_name">
         <if test="name != null and name != ''">
             and name like concat('%',concat(#{name}, '%'))
         </if>
     </sql>
-
+    <sql id="sql_type">
+        <if test="type != null">
+            and g.type = #{type}
+        </if>
+    </sql>
     <sql id="sql_region">
         <if test="region != null and region != ''">
             and region like concat('%',concat(#{region}, '%'))
@@ -31,7 +108,8 @@
     </sql>
     <sql id="sql_id">
         <if test="id != null">
-            and id = #{id}
+            and g.id = #{id}
         </if>
     </sql>
+
 </mapper>

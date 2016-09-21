@@ -1,7 +1,6 @@
 package com.bs.trade.model;
 
 import javax.persistence.*;
-import java.util.Date;
 
 /**
  * 物品信息
@@ -42,31 +41,19 @@ public class GoodsInfo {
      * 原价
      */
     @Column(name = "original_cost")
-    private double originalCost;
+    private Integer originalCost;
 
     /**
      * 押金
      */
     @Column(name = "current_price")
-    private double currentPrice;
+    private Integer currentPrice;
 
     /**
      * 交易金额
      */
     @Column(name = "trade_cost")
-    private double tradeCost;
-
-    /**
-     * 借出时间
-     */
-    @Column(name = "out_time")
-    private Date outTime;
-
-    /**
-     * 归还时间
-     */
-    @Column(name = "back_time")
-    private Date backTime;
+    private Integer tradeCost;
 
     /**
      * 特例，交易物品是现价时的现金级别
@@ -79,6 +66,30 @@ public class GoodsInfo {
      */
     private Integer status;
 
+    /**
+     * 借出次数
+     */
+    @Column(name = "out_count")
+    private Integer outCount;
+
+    /**
+     * 收藏次数
+     */
+    @Column(name = "collect_count")
+    private Integer collectCount;
+
+    /**
+     * 搜索次数
+     */
+    @Column(name = "search_count")
+    private Integer searchCount;
+    /**
+     * 商品细节描述
+     */
+    private String detail;
+
+    @Column(name = "image_url")
+    private String imageUrl;
     public Integer getId() {
         return id;
     }
@@ -119,44 +130,28 @@ public class GoodsInfo {
         this.owner = owner;
     }
 
-    public double getOriginalCost() {
+    public Integer getOriginalCost() {
         return originalCost;
     }
 
-    public void setOriginalCost(double originalCost) {
+    public void setOriginalCost(Integer originalCost) {
         this.originalCost = originalCost;
     }
 
-    public double getCurrentPrice() {
+    public Integer getCurrentPrice() {
         return currentPrice;
     }
 
-    public void setCurrentPrice(double currentPrice) {
+    public void setCurrentPrice(Integer currentPrice) {
         this.currentPrice = currentPrice;
     }
 
-    public double getTradeCost() {
+    public Integer getTradeCost() {
         return tradeCost;
     }
 
-    public void setTradeCost(double tradeCost) {
+    public void setTradeCost(Integer tradeCost) {
         this.tradeCost = tradeCost;
-    }
-
-    public Date getOutTime() {
-        return outTime;
-    }
-
-    public void setOutTime(Date outTime) {
-        this.outTime = outTime;
-    }
-
-    public Date getBackTime() {
-        return backTime;
-    }
-
-    public void setBackTime(Date backTime) {
-        this.backTime = backTime;
     }
 
     public Integer getPriceLever() {
@@ -183,22 +178,43 @@ public class GoodsInfo {
         this.region = region;
     }
 
-    @Override
-    public String toString() {
-        return "GoodsInfo{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", lever='" + lever + '\'' +
-                ", type=" + type +
-                ", owner=" + owner +
-                ", region=" + region +
-                ", originalCost=" + originalCost +
-                ", currentPrice=" + currentPrice +
-                ", tradeCost=" + tradeCost +
-                ", outTime=" + outTime +
-                ", backTime=" + backTime +
-                ", priceLever=" + priceLever +
-                ", status=" + status +
-                '}';
+    public Integer getOutCount() {
+        return outCount;
+    }
+
+    public void setOutCount(Integer outCount) {
+        this.outCount = outCount;
+    }
+
+    public Integer getCollectCount() {
+        return collectCount;
+    }
+
+    public void setCollectCount(Integer collectCount) {
+        this.collectCount = collectCount;
+    }
+
+    public Integer getSearchCount() {
+        return searchCount;
+    }
+
+    public void setSearchCount(Integer searchCount) {
+        this.searchCount = searchCount;
+    }
+
+    public String getDetail() {
+        return detail;
+    }
+
+    public void setDetail(String detail) {
+        this.detail = detail;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

@@ -1,6 +1,7 @@
 package com.bs.trade.service;
 
 import com.bs.trade.model.UserInfo;
+import com.github.pagehelper.PageInfo;
 
 /**
  * 用户操作接口
@@ -21,4 +22,14 @@ public interface UserInfoService extends IService<UserInfo>{
      * @return
      */
     boolean login(UserInfo user);
+
+
+    /**
+     * 查出所有用户
+     * @return
+     */
+    PageInfo<UserInfo> getAll(int page, int rows);
+
+    UserInfo getByEmail(UserInfo userInfo);
+
 }

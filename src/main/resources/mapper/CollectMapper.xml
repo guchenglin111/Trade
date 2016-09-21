@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.bs.trade.mapper.CollectMapper">
+    <resultMap id="goodsVo" type="com.bs.trade.model.GoodsVo">
+        <!--
+          WARNING - @mbggenerated
+        -->
+        <id column="id" property="id" jdbcType="INTEGER"/>
+        <result column="name" property="name" jdbcType="VARCHAR"/>
+    </resultMap>
+    <select id="showCollect" resultMap="goodsVo">
+        select cs.id as collectId , cs.goods as id,cs.user as userId,s.name as name,s.type as typeId ,t.name as
+        typeName,cs.collect_time as collectTime,s.image_url as imageUrl,g.trade_cost as tradeCost
+        from collect as cs,goods as s,goods_type as t
+        where cs.goods = s.id
+        AND s.type = t.id
+        <include refid="sql_id"/>
+        ORDER BY cs.collect_time
+    </select>
+    <sql id="sql_id">
+        <if test="id != null">
+            and cs.user = #{id}
+        </if>
+    </sql>
+</mapper>

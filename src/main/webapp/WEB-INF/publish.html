@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>“易清”借还管理系统</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+<!-- title -->
+<div class='header-wrap'>
+	<div class='header-box'>
+		<div class='header'>
+			<div class='header-logo'><img src="img/dogLogo.png" alt='logo'></div>
+			<div class='header-search'>
+				<input type="text" placeholder='商品名称\商品地区' class='search'>
+				<i class='icomoon search-font'>&#xe986</i>
+			</div>
+			<div class="header-nav">
+				<ul>
+					<li><a href="goodsList">去搜索</a></li>
+					<li><a href="publish">我要发布</a></li>
+					<li><a href="personal">我的</a></li>
+				</ul>
+			</div>
+			<div class='header-info'>
+				<!-- 已登录 -->
+				<ul class="header-info-ls" id='loginHave'>
+					<li>
+						<a href="javascript:void(0);" id="alarm">
+							<i class='icomoon' >&#xe951</i>
+							<i class='msg-num'></i>
+						</a>
+					</li>
+					<li class='set-info'>
+						<a href="personal" id='name'></a>
+						<a href="javascript:void(0);" >
+							<i class='icomoon arrow'id='arrow' type='up'>&#xea41</i>
+						</a>
+					</li>
+				</ul>
+				<!-- 未登录 -->
+				<ul class="header-info-ls" id='loginNone'>
+					<li>
+						<a href="login" id='login'>登陆</a>
+					</li>
+					<li class='set-info'>
+						<a href="register" id='name'>注册</a>
+					</li>
+				</ul>
+				<ul class='header-info-ls-set'>
+					<li><a href="javascript:void(0);" id="quite">退出登录</a></li>
+				</ul>
+				<ul class='header-info-msg'>
+					<!-- <li>
+                        <a href="javascript:void(0);" class='msg'></a>
+                        <a href="javascript:void(0);" ><i class='icomoon leaf' typeId='' state='0'>&#xe9a4</i></a>
+                    <> -->
+				</ul>
+
+			</div>
+		</div>
+	</div>
+</div>
+<!-- content -->
+<div class='publish-wrap'>
+	<div class='publish-box'>
+		<div class='publish'>
+			<div class='publish-label'>
+				<p><span class='w4'>商品名称</span></p>
+				<p><span class='w2'>价格</span></p>
+				<p><span class='w2'>原价</span></p>
+				<p><span class='w2'>押金</span></p>
+				<p><span class='w2'>类型</span></p>
+				<p><span class='w2'>成色</span></p>
+				<p class='publish-label-detail'><span class='w2'>描述</span></p>
+				<p><span class='w2'>电话</span></p>
+				<p><span class='w2'>地址</span></p>
+				<p><span class='w2'>头图</span></p>
+				<p><span class='w2'>组图</span></p>
+			</div>
+			<div class='publish-content'>
+				<div><input type="text" id='shopName'></div>
+				<div><input type="text" id='shopMoney'></div>
+				<div><input type="text" id='shopOldMoney'></div>
+				<div><input type="text" id='shopDeposit'></div>
+				<div>
+					<ul class='shop-type-ls shop-ls'>
+						<li class='shop-type active' type-id="1"><a href="javascript:void(0);">电子设备</a></li>
+						<li class='shop-type' type-id="2"><a href="javascript:void(0);">生活达人</a></li>
+						<li class='shop-type' type-id="3"><a href="javascript:void(0);">吃货合集</a></li>
+						<li class='shop-type' type-id="4"><a href="javascript:void(0);">出行设备</a></li>
+						<li class='shop-type' type-id="5"><a href="javascript:void(0);">家居家纺</a></li>
+					</ul>
+				</div>
+				<div>
+					<ul class='shop-judeg-ls shop-ls'>
+						<li class='shop-type active'><a href="javascript:void(0);">六成新</a></li>
+						<li class='shop-type'><a href="javascript:void(0);">七成新</a></li>
+						<li class='shop-type'><a href="javascript:void(0);">八成新</a></li>
+						<li class='shop-type'><a href="javascript:void(0);">九成新</a></li>
+						<li class='shop-type'><a href="javascript:void(0);">完好无损</a></li>
+					</ul>
+				</div>
+				<div class='shop-deta'>
+					<textarea id='shopDetail'></textarea>
+				</div>
+				<div><input type="text" id='shopTel'></div>
+				<div><input type="text" id='shopAddress'></div>
+				<div><input type="file" id='shopLogo'></div>
+				<div><input type="file" multiple id='shopPics'></div>
+			</div>
+			<div class='publish-warn'>
+				<p class='warn1'>商品名称不能为空哦</p>
+				<p class='warn2'>请输入数字</p>
+				<p class='warn3'>请输入数字</p>
+				<p class='warn4'>请输入数字</p>
+				<p class='warn5'>请选择一个类型</p>
+				<p class='warn6'>请选择一个成色</p>
+				<p class='warn7'>内容不能为空哦</p>
+				<p class='warn8'>请输入数字</p>
+				<p class='warn9'>地址不能为空，汪~</p>
+				<p class='warn10'>必须上传一张图片哦</p>
+				<p class='warn11'>必须上传一张图片哦</p>
+			</div>
+			<div style="clear: both"></div>
+			<div class='publish-submit'>
+				<a href="javascript:void(0);" id="publishOk">发布一键</a>
+				<a href="javascript:void(0);" id="publishCancel">再考虑下</a>
+			</div>
+		</div>
+		<div class='asset-wrap'><a href="javascript:void(0);" id='assetPublish'>资金周转发布</a></div>
+	</div>
+</div>
+<!-- 发布成功，等待审核通过 -->
+<div class='warn-sucess' id='publishSuccess'>加入购物车成功，汪~</div>
+<!-- footer -->
+<div class='footer-wrap'>
+	<div class='footer'>
+		<p>Copyright ©2016 汪星人</p>
+		<p>鸣谢：王雅男&商盼盼</p>
+		<p>毕业愉快</p>
+	</div>
+</div>
+<!-- 资金周转窗口 -->
+<div class='add-money-wrap'>
+	<div class='add-mone-box'>
+		<div class='add-money-label'>
+			<p>发布金额：</p>
+			<p>交易金额：</p>
+			<p>地区名称：</p>
+		</div>
+		<div class='add-money-text asset-text'>
+			<input type="text" id='assetMoney'>
+			<input type="text" id='assetTradeMoney'>
+			<input type="text" id='assetAddress'>
+		</div>
+		<div style="clear:both"></div>
+		<div class='add-mone-btn'>
+			<a href="javascript:void(0);" id='addMoneyOk'>充值</a>
+			<a href="javascript:void(0);" id='addMoneyCancel'>取消</a>
+		</div>
+		<div class='close add-money-close'>X</div>
+	</div>
+</div>
+
+</body>
+<script type="text/javascript" src='js/jquery-2.1.4.min.js'></script>
+<script type="text/javascript" src='js/jquery.cookie.js'></script>
+<script type="text/javascript" src="js/ajaxupload.3.6.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/publish.js"></script>
+</html>

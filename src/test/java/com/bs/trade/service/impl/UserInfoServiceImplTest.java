@@ -1,5 +1,6 @@
 package com.bs.trade.service.impl;
 
+import com.bs.trade.mapper.UserInfoMapper;
 import com.bs.trade.model.UserInfo;
 import com.bs.trade.service.UserInfoService;
 import org.apache.log4j.Logger;
@@ -8,6 +9,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
+import java.util.List;
 
 
 /**
@@ -24,7 +27,8 @@ public class UserInfoServiceImplTest {
     private static final Logger LOGGER = Logger.getLogger(UserInfoServiceImplTest.class);
     @Autowired
     private UserInfoService userInfoService;
-
+    @Autowired
+    private UserInfoMapper userInfoMapper;
     /**
      * Method: selectByKey(Object key)
      */
@@ -65,5 +69,27 @@ public class UserInfoServiceImplTest {
         //修改全部值
         Object o2 = userInfoService.updateAll(userInfo);
         LOGGER.info(o);
+    }
+
+    @Test
+    public void testLogin() throws Exception {
+       /* UserInfo userInfo = new UserInfo();
+        userInfo.setEmail("lufei@qq.com");
+        userInfo.setPassword("111111");
+        Object o =  userInfoService.login(userInfo);
+        LOGGER.info(o);*/
+        UserInfo userInfo = new UserInfo();
+        userInfo.setEmail("123@qq.com");
+        Object  o = userInfoMapper.selectOne(userInfo);
+        LOGGER.info(o);
+
+    }
+
+    @Test
+    public void testgetByMail() throws Exception {
+        List<UserInfo> u = userInfoMapper.selectAll();
+        for (UserInfo uu :u){
+            System.out.println(uu.toString());
+        }
     }
 }
